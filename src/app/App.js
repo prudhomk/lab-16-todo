@@ -9,10 +9,23 @@ import {
   Redirect
 } from 'react-router-dom';
 import './App.css';
+import 'TodoTracker' from '../todo-tracker/TodoTracker';
+import 'AuthPage' from '../auth/AuthPage';
 
 class App extends Component {
+  state = {
+    token: window.localStorage.getItem('TOKEN')
+  }
+
+  handleUser = user => {
+    window.localStorage.setItem('TOKEN', user.token);
+    this.setState({ token: user.token });
+  }
 
   render() {
+    const { token } = this.state;
+
+
     return (
       <div className="App">
         <Router>
@@ -26,17 +39,21 @@ class App extends Component {
                 )}
               />
 
-              <Route path="/resources" exact={true}
+              <Route path="/auth" exact={true}
                 render={routerProps => (
-                  <div>Implement a page of resources</div>
+                  <AuthPage {...routerProps}
+                    onUser={this.handleUser}/>
                 )}
               />
 
-              <Route path="/resources/:id"
+              <Route path="/todo-tracker" exact={true}
                 render={routerProps => (
-                  <div>Implement a page for id {routerProps.match.params.id}</div>
+                  token
+                    ? <todoTrackerPage {...routerProps}/>
+                    : <Redirect to="auth"/>
                 )}
               />
+
 
               <Redirect to="/" />
 
