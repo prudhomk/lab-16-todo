@@ -32,7 +32,7 @@ export async function logIn(credentials) {
 export async function addTodo(todo) {
   const response = await request
     .post('/api/todos')
-    .set('Authorization', window.localStorage.getitem('TOKEN'))
+    .set('Authorization', window.localStorage.getItem('TOKEN'))
     .send(todo);
 
   return response.body;
@@ -55,9 +55,11 @@ export async function deleteTodo(id) {
 }
 
 export async function completeTodo(id) {
+  
   const response = await request
-    .post(`/api/todos/${id}/completed`)
-    .set('Authorization', window.localStorage.getItem('TOKEN'));
+    .put(`/api/todos/${id}/completed`)
+    .set('Authorization', window.localStorage.getItem('TOKEN'))
+    .send();
 
   return response.body;
 }
