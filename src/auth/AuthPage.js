@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { signUp, logIn } from '../utils/todo-api.js';
+import { signUp, logIn } from '../utils/todos-api.js';
 import './AuthPage.css';
 
 export default class AuthPage extends Component {

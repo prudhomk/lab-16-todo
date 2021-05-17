@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import './Header.css';
-import { NavLink } from 'reach-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
 

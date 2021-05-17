@@ -9,8 +9,8 @@ import {
   Redirect
 } from 'react-router-dom';
 import './App.css';
-import 'TodoTracker' from '../todo-tracker/TodoTracker';
-import 'AuthPage' from '../auth/AuthPage';
+import TodoTracker from '../todo-tracker/TodoTracker';
+import AuthPage from '../auth/AuthPage';
 
 class App extends Component {
   state = {
@@ -49,7 +49,7 @@ class App extends Component {
               <Route path="/todo-tracker" exact={true}
                 render={routerProps => (
                   token
-                    ? <todoTrackerPage {...routerProps}/>
+                    ? <TodoTracker {...routerProps}/>
                     : <Redirect to="auth"/>
                 )}
               />

@@ -5,6 +5,7 @@ import './TodoTracker.css';
 export default class TodoTracker extends Component {
   state = {
     taskName: '',
+    completed: false,
     todos: []
   }
 
@@ -20,11 +21,12 @@ export default class TodoTracker extends Component {
 
   handleAdd = async e => {
     e.preventDefault();
-    const { taskName, todos } = this.state;
+    const { taskName, todos, completed } = this.state;
 
     try {
-      const addedTodo = await addTodo({ name: taskName });
+      const addedTodo = await addTodo({ task: taskName, completed });
       const updatedTodos = [...todos, addedTodo];
+      console.log(addedTodo);
       this.setState({
         todos: updatedTodos,
         taskName: ''
@@ -79,11 +81,11 @@ export default class TodoTracker extends Component {
         </form>
 
         <ul>
-          {todos.map(todo => (
-            <li key={todo.id}>
-              <h2>{todo.name}</h2>
-              <span>{todo.lives} {todo.lives === 1 ? 'Completed' : 'Complete'}</span>
-              <button className="complete" onClick={() => this.handleCompleted(todo.id)}>✓&2713;</button>
+          {todos.map((todo, i) => (
+            <li key={todo.id + i}>
+              <h2>{todo.task}</h2>
+              <span>{todo.completed === false ? 'Not Completed' : 'Complete'}</span>
+              <button className="complete" onClick={() => this.handleCompleted(todo.id)}>✓</button>
               <button className="delete" onClick={() => this.handleDelete(todo.id)}>X</button>
 
             </li>
