@@ -8,7 +8,7 @@ class Header extends Component {
     return (
       <header className="Header">
 
-        <h1>React App</h1>
+        <h1> Task Master </h1>
 
 
         <NavLink to="/todo-tracker"> ToDo Tracker</NavLink>
