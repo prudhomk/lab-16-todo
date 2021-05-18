@@ -59,7 +59,7 @@ export async function completeTodo(id) {
   const response = await request
     .put(`/api/todos/${id}/completed`)
     .set('Authorization', window.localStorage.getItem('TOKEN'))
-    .send();
+    .send(id);
 
   return response.body;
 }

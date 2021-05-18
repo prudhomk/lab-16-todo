@@ -1,0 +1,39 @@
+.TodoTrackerPage {
+  margin: auto;
+  margin-left: 10px;
+  
+}
+
+.TodoTrackerPage li {
+  margin: auto;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}
+
+.TodoTrackerPage input{
+  margin-top: 5px;
+}
+
+.TodoTrackerPage h2{
+  background-color: lavender;
+  border-radius: 6px;
+  font-size: 22px;
+}
+
+.TodoTrackerPage span{
+  background-color: lavender;
+  border-radius: 6px;
+  font-size: 22px;
+}
+
+.complete {
+  background-color: limegreen;
+  color: white;
+}
+
+.delete {
+  background-color: red;
+  color: white;
+}
