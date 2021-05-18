@@ -50,7 +50,7 @@ class App extends Component {
                 render={routerProps => (
                   token
                     ? <TodoTracker {...routerProps}/>
-                    : <Redirect to="auth"/>
+                    : <Redirect to="/auth"/>
                 )}
               />
 
