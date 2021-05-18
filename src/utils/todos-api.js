@@ -2,7 +2,7 @@ import request from 'superagent';
 
 export async function signUp(credentials) {
   const response = await request
-    .post('/api/auth/signup')
+    .post('auth/signup')
     .ok(res => res.status < 500)
     .send(credentials);
 
