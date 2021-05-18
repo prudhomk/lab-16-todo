@@ -26,7 +26,7 @@ export default class TodoTracker extends Component {
     try {
       const addedTodo = await addTodo({ task: taskName, completed });
       const updatedTodos = [...todos, addedTodo];
-      console.log(addedTodo);
+      
       this.setState({
         todos: updatedTodos,
         taskName: ''
@@ -55,11 +55,11 @@ export default class TodoTracker extends Component {
     }
   }
 
-  handleCompleted = async id => {
+  handleCompleted = async (id, completed) => {
     const { todos } = this.state;
 
     try {
-      const updatedTodo = await completeTodo(id);
+      const updatedTodo = await completeTodo(id, completed);
 
       const updatedTodos = todos.map(todo => todo.id === id ? updatedTodo : todo);
       this.setState({ todos: updatedTodos });
@@ -85,7 +85,7 @@ export default class TodoTracker extends Component {
             <li key={todo.id + i}>
               <h2>{todo.task}</h2>
               <span>{todo.completed === false ? 'Not Completed' : 'Complete'}</span>
-              <button className="complete" onClick={() => this.handleCompleted(todo.id)}>✓</button>
+              <button className="complete" onClick={() => this.handleCompleted(todo.id, !todo.completed)}>✓</button>
               <button className="delete" onClick={() => this.handleDelete(todo.id)}>X</button>
 
             </li>
